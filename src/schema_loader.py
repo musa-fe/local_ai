@@ -1,7 +1,9 @@
 import json
 import os
 
-SCHEMAS_DIR = "schemas/"
+# Scriptin konumundan bağımsız çalışır
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SCHEMAS_DIR = os.path.join(BASE_DIR, "schemas")
 
 def load_schema(dosya_adi: str) -> list:
     """JSON schema dosyasını okur"""
@@ -35,7 +37,13 @@ def llm_formatla(satirlar: list) -> str:
     return sonuc
 
 if __name__ == "__main__":
-    # Test
-    schema = load_schema("kpi_schema.json")
-    satirlar = filtrele_tablo(schema, "time_differences_all_delta")
+    # Kaynak tablo
+    print("=== HEDEF TABLO ===")
+    kpi_schema = load_schema("kpi_schema.json")
+    satirlar = filtrele_tablo(kpi_schema, "time_differences_all_delta")
     print(llm_formatla(satirlar))
+    
+    print("\n=== KAYNAK TABLO ===")
+    delivery_schema = load_schema("delivery_schema.json")
+    satirlar2 = filtrele_tablo(delivery_schema, "delivery_dm_initial_order_sku_daily")
+    print(llm_formatla(satirlar2))
