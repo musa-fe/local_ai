@@ -1,0 +1,10 @@
+schemas/
+outputs/
+benchmark/
+
+__pycache__/
+*.pyc
+.env
+venv/
+
+.vscode/
