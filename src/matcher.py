@@ -29,7 +29,8 @@ FROM `hb-analysis-prod.delivery.delivery_dm_initial_order_sku_daily`
 def llm_calistir(prompt: str, model: str = "qwen2.5-coder:latest") -> str:
     response = ollama.chat(
         model=model,
-        messages=[{"role": "user", "content": prompt}]
+        messages=[{"role": "user", "content": prompt}],
+        options={"num_ctx": 16384}  
     )
     return response["message"]["content"]
 
