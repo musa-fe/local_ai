@@ -57,11 +57,11 @@ CREATE TEMP FUNCTION city_normalize(city STRING)
    merchant_delivery_seller_pays,
    NULL as is_esd_ai_merchant,
    estimated_shipping_date as esd_merchant,
-   CASE WHEN CAST(JSON_VALUE(extension_additional_fields, '$.ShipmentDays') AS INT64) IS NULL OR JSON_VALUE(extension_additional_fields, '$.ShipmentDays') = "" THEN DATE_DIFF(estimated_shipping_date, order_date, DAY)
+   CASE WHEN CAST(JSON_VALUE(extension_additional_fields, '$.ShipmentDays') AS INT64) IS NULL OR JSON_VALUE(extension_additional_fields, '$.ShipmentDays') = "" THEN estimated_shipping_day
    ELSE CAST(JSON_VALUE(extension_additional_fields, '$.ShipmentDays') AS INT64) END AS esd_ai,
  
  
-   DATE_DIFF(estimated_shipping_date, order_date, DAY) as estimatedShippingDay,
+   estimated_shipping_day as estimatedShippingDay,
    case when city_normalize(delivery_sender_city_name) = 'Kocaeli' and city_normalize(delivery_receiver_city_name) in ('Istanbul','Bursa','Kocaeli') then true
              when city_normalize(delivery_sender_city_name)  = 'Izmir' and city_normalize(delivery_receiver_city_name) in ('Izmir','Aydin','Manisa') then true
              when city_normalize(delivery_sender_city_name)  = 'Duzce' and city_normalize(delivery_receiver_city_name) in ('Istanbul','Ankara','Sakarya','Kocaeli') then true

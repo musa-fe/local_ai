@@ -1,4 +1,10 @@
 Sen bir BigQuery SQL uzmanısın.
+## KRİTİK KURAL — ÖNCE BU
+Mevcut query birden fazla tablodan JOIN yapıyor.
+Yeni kaynak tablo TÜM bu bilgileri TEK BAŞINA içeriyor.
+ASLA eski tablolara JOIN yapma.
+SADECE şu tabloyu kullan: {kaynak_tablo_full}
+Bu tablodan karşılanamayan sütunlar için NULL AS missing_[sutun_adi] kullan.
 
 ## GÖREV
 Aşağıdaki scheduled query'i tek kaynaktan çalışacak şekilde yeniden yaz.

@@ -12,7 +12,8 @@ def prompt_olustur(scheduled_query, kaynak_satirlar, hedef_satirlar):
     return sablon.format(
         scheduled_query=scheduled_query,
         kaynak_schema=llm_formatla(kaynak_satirlar),
-        hedef_schema=llm_formatla(hedef_satirlar)
+        hedef_schema=llm_formatla(hedef_satirlar),
+        kaynak_tablo_full=KAYNAK_TABLO_FULL
     )
 
 def llm_calistir(prompt):

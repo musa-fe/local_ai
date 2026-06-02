@@ -17,7 +17,8 @@ def prompt_olustur(scheduled_query: str, kaynak_satirlar: list, hedef_satirlar: 
     return sablon.format(
         scheduled_query=scheduled_query,
         kaynak_schema=llm_formatla(kaynak_satirlar),
-        hedef_schema=llm_formatla(hedef_satirlar)
+        hedef_schema=llm_formatla(hedef_satirlar),
+        kaynak_tablo_full=KAYNAK_TABLO_FULL
     )
 
 
