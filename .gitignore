@@ -1,6 +1,6 @@
-#schemas/
-#outputs/
-#benchmark/
+schemas/
+outputs/
+benchmark/
 
 __pycache__/
 *.pyc
