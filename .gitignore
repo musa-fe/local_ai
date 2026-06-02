@@ -1,6 +1,7 @@
 schemas/
 outputs/
 benchmark/
+prompts/reference_output.sql
 
 __pycache__/
 *.pyc
